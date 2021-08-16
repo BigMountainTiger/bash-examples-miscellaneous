@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# https://www.ffmpeg.org/
+# https://linuxize.com/post/how-to-install-ffmpeg-on-ubuntu-20-04/
+
+# Make it window playable
+mkdir -p converted
+ffmpeg -i A.mp4 -pix_fmt yuv420p -c:a copy -movflags +faststart converted/out.mp4 -y
+
+# Truncate
+# ffmpeg -ss 00:00:00 -t 00:00:09 -i out.mp4 -vcodec copy -acodec copy output.mp4
