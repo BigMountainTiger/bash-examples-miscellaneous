@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# Examples
+# https://www.geeksforgeeks.org/sed-command-in-linux-unix-with-examples/
+
+TEXT='unix is great os. unix is opensource. unix is free os.
+unix is easy to learn. unix is a multiuser os. Learn unix. unix is a powerful.'
+
+echo "Original text:"
+cat <<<"$TEXT"
+
+echo && echo "Replace the 1st unix:"
+sed 's/unix/linux/' <<<"$TEXT"
+
+echo && echo "Replace the 2nd unix:"
+sed 's/unix/linux/2' <<<"$TEXT"
+
+echo && echo "Replace the all unix:"
+sed 's/unix/linux/g' <<<"$TEXT"
+
+echo && echo "Replace inline: -i"
+echo "For help: sed --help"

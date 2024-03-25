@@ -1,0 +1,15 @@
+#!/bin/bash
+
+echo "expr only handles integers"
+
+expression="(5 + 4) * 2"
+echo "$expression = $(expr $expression)"
+
+expression="5 - 4"
+echo "$expression = $(expr $expression)"
+
+expression="5 * 4"
+echo "$expression = $(expr $expression)"
+
+expression="9 / 4"
+echo "$expression = $(expr $expression)"

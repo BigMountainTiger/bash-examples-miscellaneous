@@ -1,0 +1,8 @@
+#!/bin/bash
+
+ls -la
+
+echo
+echo "1 represents standard output"
+ls -la 1>/dev/null
+

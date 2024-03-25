@@ -1,0 +1,7 @@
+#!/bin/bash
+
+echo "The youtube channel"
+echo "https://www.youtube.com/watch?v=2733cRPudvI&list=PLT98CRl2KxKGj-VKtApD8-zCqSaN2mD4w&ab_channel=LearnLinuxTV"
+
+echo
+echo "The shell-format vscode extension helps"

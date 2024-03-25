@@ -1,0 +1,4 @@
+#!/bin/bash
+
+export NAME="example-secret"
+export SECRET_STR='{ "id": 1, "value": "Initial Value" }'

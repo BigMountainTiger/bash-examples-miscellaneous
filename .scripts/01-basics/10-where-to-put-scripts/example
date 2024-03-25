@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# https://www.youtube.com/watch?v=H89QlqFqJQg&list=PLT98CRl2KxKGj-VKtApD8-zCqSaN2mD4w&index=10&ab_channel=LearnLinuxTV
+
+# FHS
+# https://en.wikipedia.org/wiki/Filesystem_Hierarchy_Standard
+# https://refspecs.linuxfoundation.org/FHS_3.0/fhs/index.html
+
+echo "/bin"
+echo "Essential command binaries that need to be available in single-user mode, including to bring up the system or repair it,[3] for all users (e.g., cat, ls, cp)."
+
+echo
+echo "/sbin"
+echo "Essential system binaries (e.g., fsck, init, route)."
+
+echo
+echo "/usr/bin"
+echo "Non-essential command binaries (not needed in single-user mode); for all users."
+
+echo
+echo "/usr/sbin"
+echo "Non-essential system binaries (e.g., daemons for various network services)."
+
+echo
+echo "/usr/local/bin"
+echo "It is recommended to put user bin here, it should be in PATH already"

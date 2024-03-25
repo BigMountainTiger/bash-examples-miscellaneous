@@ -1,0 +1,7 @@
+#!/bin/bash
+
+cat /not-exists
+
+echo
+echo "2 represents standard error"
+cat /not-exists 2>/dev/null

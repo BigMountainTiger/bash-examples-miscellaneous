@@ -1,0 +1,10 @@
+#!/bin/bash
+
+A_V=0
+
+count() {
+    A_V=$(expr $A_V + 1)
+    echo $A_V
+}
+
+export -f count

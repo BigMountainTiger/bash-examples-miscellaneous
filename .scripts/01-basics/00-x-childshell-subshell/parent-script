@@ -1,0 +1,48 @@
+#!/bin/bash
+
+# https://tldp.org/LDP/abs/html/subshells.html
+# https://unix.stackexchange.com/questions/421020/what-is-the-exact-difference-between-a-subshell-and-a-child-process
+
+echo "Comments:"
+echo "1. Both are separate processes than the parent shell, both are children of the parent shell"
+echo "2. They have different PIDs, and both start with a fork (copy) of the parent shell"
+echo "3. A subshell is a copy of the parent shell in which variables, functions, flags and everything is available as it was in the parent shell"
+echo "4. A child shell gets reset to the shell default values given by the start configs, A variable needs 'export' to be accessible to the child shell"
+echo -e "5. Modifications of any values do not affect the parent\n"
+
+export EXPORTED_VARIABLE="00000000000000000"
+NON_EXPORTED_VARIABLE="00000000000000000"
+
+echo -e "The parent PID = $BASHPID\n"
+
+# Child shell
+echo "child-shell example"
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
+$SCRIPT_PATH/child-script
+echo "EXPORTED_VARIABLE is still $EXPORTED_VARIABLE in the parent shell"
+
+# Subshell
+echo -e "\nsubshell example"
+(
+    echo "The subshell PID = $BASHPID"
+
+    if [ -z "$NON_EXPORTED_VARIABLE" ]; then
+    echo "NON_EXPORTED_VARIABLE is not available"
+    else
+        echo "NON_EXPORTED_VARIABLE = $NON_EXPORTED_VARIABLE"
+    fi
+
+    if [ -z "$EXPORTED_VARIABLE" ]; then
+        echo "EXPORTED_VARIABLE is not available"
+    else
+        echo "EXPORTED_VARIABLE = $EXPORTED_VARIABLE"
+    fi
+
+    echo "Moifying the variables"
+    EXPORTED_VARIABLE="1111111111111111111"
+    NON_EXPORTED_VARIABLE="1111111111111111111"
+)
+echo "EXPORTED_VARIABLE is still $EXPORTED_VARIABLE in the parent shell"
+echo "NON_EXPORTED_VARIABLE is still $NON_EXPORTED_VARIABLE in the parent shell"
+
+

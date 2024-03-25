@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# https://www.geeksforgeeks.org/shell-scripting-standard-input-output-and-error/
+
+echo -n "please type in your input: "
+read input
+
+echo
+echo -e 'You just typed "'"$input"'"'

@@ -1,0 +1,4 @@
+#!/bin/bash
+
+# https://www.youtube.com/watch?v=HOaINcUTSg0&list=PLT98CRl2KxKGj-VKtApD8-zCqSaN2mD4w&index=15&ab_channel=LearnLinuxTV
+echo "https://www.youtube.com/watch?v=HOaINcUTSg0&list=PLT98CRl2KxKGj-VKtApD8-zCqSaN2mD4w&index=15&ab_channel=LearnLinuxTV"

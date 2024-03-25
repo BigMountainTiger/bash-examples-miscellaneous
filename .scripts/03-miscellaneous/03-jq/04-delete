@@ -1,0 +1,11 @@
+#!/bin/bash
+
+J='{
+    "arg": {
+        "entry": "This is the entry",
+        "entry-1": "This is the entry-1"
+    }
+}'
+
+J=$(jq 'del(."arg"."entry-1")' <<<$J)
+echo "$J"

@@ -1,0 +1,18 @@
+#!/bin/bash
+
+echo "The child process PID = $BASHPID"
+
+if [ -z "$NON_EXPORTED_VARIABLE" ]; then
+    echo "NON_EXPORTED_VARIABLE is not available"
+else
+    echo "NON_EXPORTED_VARIABLE = $NON_EXPORTED_VARIABLE"
+fi
+
+if [ -z "$EXPORTED_VARIABLE" ]; then
+    echo "EXPORTED_VARIABLE is not available"
+else
+    echo "EXPORTED_VARIABLE = $EXPORTED_VARIABLE"
+fi
+
+echo "Moifying the EXPORTED_VARIABLE"
+EXPORTED_VARIABLE="1111111111111111111"

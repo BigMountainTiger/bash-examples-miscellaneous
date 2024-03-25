@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# https://www.gnu.org/software/bc/manual/html_mono/bc.html
+echo "bc is an independent installation available in Ubuntu"
+echo "Run 'bc -h'"
+
+echo
+expression="5 + 4"
+echo "$expression = $(bc <<<$expression)"
+
+expression="5 - 4"
+echo "$expression = $(bc <<<$expression)"
+
+expression="5.1 * 4"
+echo "$expression = $(bc <<<$expression)"
+
+expression="scale = 8; 9 / 4"
+echo "$expression = $(bc <<<$expression)"
+
+# https://askubuntu.com/questions/621017/how-to-set-default-scale-for-bc-calculator
+echo -e "\nbc scale"
+echo "1. The scale of the result is the maximum scale of the expression involved"
+echo "2. The scale for division (set in the expression), or place a file .bc in your home with 'scale=8'"
+
+# https://www.geeksforgeeks.org/bc-command-linux-examples/
+echo -e "\nbc support variables, branching, loops, etc."
+echo "A more complicated example"
+expression='
+    x = 1 + 1;
+    y = 2 + 2;
+    x + y;
+'
+echo "The complicated expression = $(bc <<<$expression)"

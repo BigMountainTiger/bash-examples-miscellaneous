@@ -1,0 +1,14 @@
+#!/bin/bash
+
+example_func() {
+    
+    local local_variable="This is a local variable"
+    echo $local_variable
+}
+
+# call the example_func()
+example_func
+
+if [ -z "$local_variable" ]; then
+    echo "This local variable is not accessible out of the function"
+fi

@@ -1,0 +1,21 @@
+#!/bin/bash
+
+IDEX=0
+
+while [ $IDEX -lt 100 ]; do
+    IDEX=$(($IDEX + 1))
+    
+    M=$(($IDEX % 10))
+    
+    # In case of modulo is 5 => skip
+    if [ $M -eq 5 ]; then
+        continue
+    fi
+
+    # When IDEX larger than 20 => stop
+    if [ $IDEX -gt 20 ]; then
+        break
+    fi
+
+    echo $IDEX
+done

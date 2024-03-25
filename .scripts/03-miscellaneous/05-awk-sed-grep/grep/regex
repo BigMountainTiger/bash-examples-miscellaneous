@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# https://linuxize.com/post/regular-expressions-in-grep/
+
+TEXT='The unix is great os. unix is opensource. UNIX is free os.
+UNIX is good.'
+
+echo "Original text:"
+cat <<<"$TEXT"
+
+
+echo && echo "Start with"
+grep '^U' <<<"$TEXT"
+
+echo && echo "End with"
+grep '.$' <<<"$TEXT"
+
+echo && echo "Bracket Expressions - {2} means twice"
+grep -E 'gr[ea]{2}t' <<<"$TEXT"
+
+echo
+echo "More examples - https://linuxize.com/post/regular-expressions-in-grep/"

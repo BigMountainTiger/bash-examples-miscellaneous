@@ -1,0 +1,15 @@
+#!/bin/bash
+
+# https://tldp.org/LDP/abs/html/dblparens.html
+
+expression="(5 + 4) * 2"
+echo "$expression = $(($expression))"
+
+expression="5 - 4"
+echo "$expression = $(($expression))"
+
+expression="5 * 4"
+echo "$expression = $(($expression))"
+
+expression="9 / 4"
+echo "$expression = $(($expression))"

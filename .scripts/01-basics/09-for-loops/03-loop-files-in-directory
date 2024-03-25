@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# We should not add quote there
+echo "The /etc dir:"
+for file in /etc/v*; do
+    echo $file
+done
+
+echo -e "\nThe Home dir"
+for file in ~/*; do
+    echo $file
+done
+
+echo -e "\n/List only directories - add / at the end"
+for file in ~/A*/; do
+    echo $file
+done
+
+
+echo -e "\nUse find command"
+for file in $(find ./ -mindepth 1 -maxdepth 1 -type d -printf "%f\n")
+do
+    echo $file
+done

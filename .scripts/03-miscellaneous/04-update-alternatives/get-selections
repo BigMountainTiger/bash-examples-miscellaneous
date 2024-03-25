@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# update-alternatives --help
+
+update-alternatives --help | grep "get-selections" 
+
+# For example java
+update-alternatives --get-selections | grep java
