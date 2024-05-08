@@ -1,0 +1,17 @@
+#!/bin/bash
+
+# https://www.geeksforgeeks.org/grep-command-in-unixlinux/
+
+TEXT='unix is great os. unix is opensource. UNIX is free os.
+UNIX is good.'
+
+echo "Original text:"
+cat <<<"$TEXT"
+
+echo && echo "grep:"
+grep 'unix' <<<"$TEXT"
+
+echo && echo "case insensitive -i:"
+grep -i 'unix' <<<"$TEXT"
+
+echo && echo "More examples: https://www.geeksforgeeks.org/grep-command-in-unixlinux/"

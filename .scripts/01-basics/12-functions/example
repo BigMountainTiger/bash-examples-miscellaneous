@@ -1,0 +1,12 @@
+#!/bin/bash
+
+example_function() {
+    echo 'In a function, $0 is NOT the function name'
+    echo "'$0'"
+
+    echo
+    echo 'The parameters start from $1'
+    echo "'$1'" "'$2'" "'$3'"
+}
+
+example_function "Param 1" "Param 2" "Param 3"

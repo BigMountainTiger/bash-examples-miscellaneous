@@ -1,0 +1,13 @@
+#!/bin/bash
+
+pwd
+
+example_function() {
+    cd ~
+    pwd
+}
+
+example_function
+
+# pwd is expected to be changed by the function call
+pwd

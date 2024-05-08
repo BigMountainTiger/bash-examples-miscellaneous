@@ -1,0 +1,4 @@
+The following extensions have been tested:
+
+1. The "Bash IDE" helps on bash syntax
+2. The "shell-format"extension helps to format the bash scripts

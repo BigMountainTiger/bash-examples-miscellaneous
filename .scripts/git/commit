@@ -1,0 +1,13 @@
+#!/bin/bash
+
+PROJECT="bash-examples-miscellaneous"
+
+git reset --soft HEAD~
+git add-commit -m "Updated the $PROJECT"
+git push -f
+
+echo
+echo "Wait for a second ..."
+sleep 1
+
+git log -2

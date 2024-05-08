@@ -1,0 +1,16 @@
+#!/bin/bash
+
+# https://stackoverflow.com/questions/6270440/how-to-test-string-and-integer-equality-and-combine-with-logical-and-oper
+
+check() {
+    RESULT="false"
+    # This is the syntax to control the order of the boolean calculations
+    if [[ $1 == 1 && ($2 == "t1" || $3 == "t2") ]]; then
+        RESULT="true"
+    fi
+
+    echo "Boolean evaluation is $RESULT"
+}
+
+check 1 "t1" "t2"
+check 2 "t1" "t2"

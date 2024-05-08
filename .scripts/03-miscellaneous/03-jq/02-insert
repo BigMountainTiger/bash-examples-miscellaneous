@@ -1,0 +1,27 @@
+#!/bin/bash
+
+J='{
+    "arg": {
+        "entry": "This is the entry"
+    }
+}'
+
+NEW_ENTRY="entry-1"
+NEW_VALUE='This is the "new entry-1"'
+# The sed escape the quote to \"
+NEW_VALUE=$(sed 's/"/\\"/g' <<<"$NEW_VALUE")
+
+echo "Adding a new entry to the json. double quote is in the data on-purpose"
+J=$(jq '.arg."'$NEW_ENTRY'" += "'"$NEW_VALUE"'"' <<<$J)
+
+echo "$J"
+
+echo
+echo "Parsing the new entry"
+# Notice the lookup key, sometimes double quote is needed on "entry-1" due to special character "-"
+jq -r '.arg."entry-1"' <<<"$J"
+jq -r '.arg."'$NEW_ENTRY'"' <<<"$J"
+
+echo
+# If no special character, no need for quote in the lookup key
+jq -r .arg.entry <<<"$J"

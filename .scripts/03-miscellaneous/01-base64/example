@@ -1,0 +1,26 @@
+#!/bin/bash
+
+echo 'To get help run -> "base64 --help"'
+
+echo
+ORIGINAL_STR="ABCD-EFGH"
+echo "ORIGINAL_STR -> $ORIGINAL_STR"
+
+echo
+BASE64_STR="$(base64 -w0 <<<"$ORIGINAL_STR")"
+echo "BASE64_STR -> $BASE64_STR"
+
+BASE64_STR="$(echo "$ORIGINAL_STR" | base64 -w0)"
+echo "BASE64_STR -> $BASE64_STR"
+
+echo
+DECODED_STR="$(base64 -d <<<"$BASE64_STR")"
+echo "DECODED_STR -> $DECODED_STR"
+
+DECODED_STR="$(echo "$BASE64_STR" | base64 -d)"
+echo "DECODED_STR -> $DECODED_STR"
+
+echo
+if [[ "$ORIGINAL_STR" == "$DECODED_STR" ]]; then
+    echo "ORIGINAL_STR equals DECODED_STR"
+fi

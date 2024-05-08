@@ -1,0 +1,28 @@
+#!/bin/bash
+
+red() {
+    echo '\033[1;31m'$1'\033[0m'
+}
+
+case "$1" in
+    pull|p)
+        echo "docker compose pull"
+        ;;
+    up|u)
+        echo "docker compose up -d"
+        ;;
+    down|d)
+        echo "docker compose down"
+        ;;
+    restart|r)
+        echo "docker compose restart ""$2"
+        ;;
+    *)
+        echo -e "Only the following operations are supported:\n"
+        echo -e "docker-compose $(red p)|pull"
+        echo -e "docker-compose $(red u)|up"
+        echo -e "docker-compose $(red d)|down"
+        echo -e "docker-compose $(red r)|restart container-name"
+        exit 1
+        ;;
+esac

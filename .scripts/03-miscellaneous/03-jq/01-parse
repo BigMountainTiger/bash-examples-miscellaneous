@@ -1,0 +1,10 @@
+#!/bin/bash
+
+J='{
+    "arg": {
+        "entry": "This is the entry"
+    }
+}'
+
+# -r mean raw, it removed the double quotes
+jq -r .arg.entry <<<"$J"

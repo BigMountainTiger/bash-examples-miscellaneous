@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# https://www.cyberciti.biz/faq/bash-for-loop/
+# https://www.geeksforgeeks.org/bash-scripting-for-loop/
+
+n=20
+echo "It is OK to use continue and break in a for loop"
+for ((i=1 ; i<=$n ; i++)); 
+do
+    m=$(($i % 10))
+    if [[ $m -eq 5 ]]; then
+        continue
+    fi
+
+    if [[ $i -gt 10 ]]; then
+        break
+    fi
+
+    echo $i
+done
+

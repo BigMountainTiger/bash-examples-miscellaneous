@@ -1,0 +1,4 @@
+#!/bin/bash
+
+simple_variable="This is a simple varaiable"
+echo $simple_variable

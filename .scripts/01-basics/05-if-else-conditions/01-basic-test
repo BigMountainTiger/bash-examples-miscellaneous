@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# https://tldp.org/LDP/abs/html/tests.html
+# https://tldp.org/LDP/abs/html/comparison-ops.html
+
+# Integer comparison
+count=100
+if [ $count -gt 80 ]; then
+    echo "count > 80"
+elif [ $count -gt 90 ]; then
+    echo "count > 90"
+else
+    echo "No match"
+fi
+
+# String comparison
+name="A"
+if [ "$name" = "A" ]; then
+    echo "Name equals"
+fi
+
+echo
+# https://www.baeldung.com/linux/bash-single-vs-double-brackets
+echo "[[ double bracket is non-standard (non POSIX) ]]"

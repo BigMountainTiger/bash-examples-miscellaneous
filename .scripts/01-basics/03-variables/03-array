@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# https://www.geeksforgeeks.org/bash-scripting-array/
+
+declare -a a=(
+    "Item 1"
+    "Item 2"
+)
+
+echo "Need to quote the array"
+echo 'otherwise "Item 1" will be treated as two items "Item" and "1"'
+for v in "${a[@]}"; do
+    echo $v
+done
+
+echo -e "\nAnother way to safely loop through array"
+# https://stackoverflow.com/questions/9084257/bash-array-with-spaces-in-elements
+for ((i = 0; i < ${#a[@]}; i++))
+do
+    echo "${a[$i]}"
+done

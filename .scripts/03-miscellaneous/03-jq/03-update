@@ -1,0 +1,18 @@
+#!/bin/bash
+
+J='{
+    "arg": {
+        "entry": "This is the entry"
+    }
+}'
+
+NEW_VALUE='This is the "updated entry"'
+# The sed escape the quote to \"
+NEW_VALUE=$(sed 's/"/\\"/g' <<<"$NEW_VALUE")
+
+J=$(jq '."arg"."entry" = "'"$NEW_VALUE"'"' <<<$J)
+
+echo "$J"
+
+echo
+jq -r .arg.entry <<<"$J"

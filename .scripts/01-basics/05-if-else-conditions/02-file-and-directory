@@ -1,0 +1,20 @@
+#!/bin/bash
+
+# https://www.geeksforgeeks.org/bash-scripting-how-to-check-if-file-exists/
+
+name="/etc"
+if [ -d "$name" ]; then
+    echo "The directory $name exists"
+fi
+
+name="~/.profile"
+if [ -f "$name" ]; then
+    echo "The file $name exists"
+else
+    echo "The ~ is only expanded when it is un-quoted - $name"
+fi
+
+name=~/.profile
+if [ -f "$name" ]; then
+    echo "The file $name exists"
+fi

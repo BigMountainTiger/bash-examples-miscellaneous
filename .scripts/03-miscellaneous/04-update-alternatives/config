@@ -1,0 +1,6 @@
+#!/bin/bash
+
+echo "This command make changes to the default java version"
+
+echo
+update-alternatives --config java

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+TEXT='This is a /, this is another /'
+echo "Original text:"
+cat <<<"$TEXT"
+
+echo
+echo -e 'Replacing "/" with "\":'
+# Notice: both / and \ require escape when using / as the separator
+sed 's/\//\\/g' <<<"$TEXT"

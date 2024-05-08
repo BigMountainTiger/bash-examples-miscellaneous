@@ -1,0 +1,11 @@
+#!/bin/bash
+
+pwd
+
+(
+    cd ~
+    pwd
+)
+
+# The directory context not expected to change
+pwd
