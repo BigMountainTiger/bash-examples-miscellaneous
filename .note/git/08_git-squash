@@ -1,0 +1,7 @@
+https://www.git-tower.com/learn/git/faq/git-squash
+
+There is no command for git squash
+It is basically
+
+git rebase -i "base-commit"
+We can either squash or pick the commits after the "base-commit"

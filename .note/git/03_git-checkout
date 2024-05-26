@@ -1,0 +1,7 @@
+https://git-scm.com/docs/git-checkout
+
+git-checkout - Switch branches or restore working tree files
+
+Restore working tree from the staging area
+
+git checkout -b "new branch name" will create the new branch and switch to it

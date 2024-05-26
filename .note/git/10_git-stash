@@ -1,0 +1,10 @@
+https://git-scm.com/docs/git-stash
+
+git-stash - Stash the changes in a dirty working directory away
+
+git stash
+git stash pop
+git stash list
+git stash show
+git stash drop
+git stash clear
