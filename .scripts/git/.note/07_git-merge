@@ -1,0 +1,25 @@
+https://git-scm.com/docs/git-merge
+
+git-merge - Join two or more development histories together
+
+--------------------------------------
+https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-squash
+For a normal three-way merge, with (--no-squash) as default:
+1. A (only one) merge commit is created
+2. The merge commit has all the changes in all the commits in the incoming branch after the common ancestor, applied on top of the head of the receiving branch
+3. The merge commit has two parents, the head of the receiving branch and the bead of the incoming branch before the merge
+    -- merge-commit-hash^1 & merge-commit-hash^2
+    -- merge-commit-hash^1 is the head of the receiving branch before the merge
+    -- merge-commit-hash^2 is the head of the incoming branch before the merge
+    -- reference - https://git-scm.com/book/en/v2/Git-Tools-Revision-Selection
+
+4. To view the two parents of the commit branh - git show "merge commit hash"
+5. To view the commit graph - "git log --gragh" or "git log --graph --oneline"
+
+---------------------------------------
+The --squash option
+https://git-scm.com/docs/git-merge#Documentation/git-merge.txt---no-squash
+This is what git documentation:
+-- Produce the working tree and index state as if a real merge happened (except for the merge information), but do not actually make a commit, move the HEAD, or record $GIT_DIR/MERGE_HEAD (to cause the next git commit command to create a merge commit). This allows you to create a single commit on top of the current branch whose effect is the same as merging another branch (or more in case of an octopus).
+
+The "--squash" option has a very rare use case
