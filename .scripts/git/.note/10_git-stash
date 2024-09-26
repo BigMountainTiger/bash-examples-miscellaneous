@@ -1,5 +1,7 @@
 https://git-scm.com/docs/git-stash
 
+It does not see to have a lot use case in my opinion
+
 git-stash - Stash the changes in a dirty working directory away
 
 git stash
