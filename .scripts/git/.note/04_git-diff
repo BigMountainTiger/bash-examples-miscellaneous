@@ -1,0 +1,18 @@
+https://git-scm.com/docs/git-diff
+
+git-diff - Show changes between commits, commit and working tree, etc
+
+1. "git diff commit_a..commit_b" - By default git commit takes two commit hashes
+    - The 1st hash is commit_a => git identify the diff in A by "-"
+    - The 2nd hash is commit_b => git identify the diff in A by "+"
+    - It is easier to make the newer commit as "b" to interpret the result
+
+2. When only one commit hash is specified, it is the "a" commit
+    - By default, the "b" is the current working directory
+    - With "--cached" option, the "b" is the index (staging area)
+
+3. When no commit hash is specified
+    - By default, the "a" is the index, the "b" is the current working directory
+    - With "--cached" option, the "a" is the HEAD, the "b" is the index
+
+4. The "--" allows us to specify exactly which director/file to compare
