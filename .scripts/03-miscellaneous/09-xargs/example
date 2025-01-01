@@ -1,0 +1,13 @@
+#!/bin/bash
+
+SCRIPT_PATH="$(realpath -s "$(dirname -- "${BASH_SOURCE[0]}")")"
+
+# 1. xargs has "-I" option to specify a placeholder, by convention {}
+# 2. It seems that we do not need to have the grep section to remove the empty lines
+
+cat $SCRIPT_PATH/file-with-data | grep -ve ^\\s*$ | \
+    xargs -I {} echo "This is what in the file - {}"
+
+
+echo
+cat $SCRIPT_PATH/file-with-data | xargs -I {} echo "This is what in the file - {}"

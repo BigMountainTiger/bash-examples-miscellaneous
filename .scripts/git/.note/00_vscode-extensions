@@ -1,0 +1,8 @@
+1. The vscode has good git support by itself
+
+2. The Timeline can show the changes on each commit on each individual file
+    - "workbench.localHistory.enabled": false to disable timeline to show the state of each local "save" on the file
+    
+3. The git history "extension" can list branch history
+
+4. The gitlens "extension" seems to be over heavy-weight for normal use
