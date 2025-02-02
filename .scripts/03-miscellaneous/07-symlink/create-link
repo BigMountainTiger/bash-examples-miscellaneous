@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# 1. The 1st argument is the target file
+# 2. The 2nd argument is the symlink
+# 3. The -s option => soft, -f option => force update if the symlink exists
+# 4. The ln command does not check the existence of the target
+# 5. When a relative path is given to the target, it is relative to the symlink
+
+ln -sf target .scripts/03-miscellaneous/07-symlink/a-symlink

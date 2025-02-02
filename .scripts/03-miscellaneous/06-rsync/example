@@ -15,8 +15,13 @@ exit 0
 #   - if the -a option is passed. It synchronizes the directories recursively.
 #   - It also keeps the ownership of users and groups, permissions, symbolic links (symlinks), and timestamps.
 #   - In fact, it’s a collection of the -rlptgoD options.
+
 rsync -a --stats source-dir/ dest-dir \
     --include excluded-dir1/sub-dir \
     --exclude excluded-dir1/* \
     --exclude excluded-dir2 \
     --delete-excluded
+
+
+# It is possible to dry-run
+# --dry-run, -n => perform a trial run with no changes made
