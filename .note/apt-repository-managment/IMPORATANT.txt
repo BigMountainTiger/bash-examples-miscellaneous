@@ -1,0 +1,10 @@
+1. The Ubuntu version need to add to the source URL, so the correct debian packages can be retrieved from the repository
+2. The "gpg" file is not an HTTPS certificate, it is used to verify that the packages downloaded is not un-authorised altered
+    - We can set the source URL to a proxy, as long as we have the original "gpg", we can safely install packages
+3. ppa-purge
+    - ppa-purge disable a ppa, mark as "enabled no" in ".source" file or "comment out" in ".list" file
+    - PPA Purge impact on application only installed from the PPA
+    - ppa-purge will reset all packages from a PPA to the standard versions released for your distribution
+        - If there is a official Ubuntu repository for the application, ppa-purge revert to it
+        - If the application is only available from the PPA, it will be removed
+    - PPA name can be found from the PPA website, for example - https://launchpad.net/~serge-rider/+archive/ubuntu/dbeaver-ce

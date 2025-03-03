@@ -1,0 +1,26 @@
+PPAs:
+
+The repository information is in the files
+- /etc/apt/sources.list
+- and the files in the "/etc/apt/sources.list.d" directory
+
+sources.list.d
+hashicorp.list
+serge-rider-ubuntu-dbeaver-ce-jammy.list.distUpgrade
+hashicorp.list.distUpgrade
+vscode.list.distUpgrade
+google-chrome.list
+google-chrome.list.distUpgrade
+vscode.list
+docker.list.distUpgrade
+serge-rider-ubuntu-dbeaver-ce-jammy.list
+deadsnakes-ubuntu-ppa-jammy.list
+deadsnakes-ubuntu-ppa-jammy.list.distUpgrade
+docker.list
+
+commands:
+sudo apt install ppa-purge
+sudo ppa-purge deadsnakes
+
+ls -l /etc/apt/
+ls -l /etc/apt/sources.list.d

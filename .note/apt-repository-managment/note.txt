@@ -1,0 +1,70 @@
+1. Need to know the Ubuntu version
+    => cat /etc/lsb-release
+    => cat /etc/upstream-release/lsb-release for linux mint
+
+IMPORTANT - The Ubuntu version need to add to the source URL, so the correct debian packages can be retrieved from the repository
+
+2. Ubuntu repositories are managed in the /etc/apt/ directory
+
+3. The "sources.list" file is phasing out starting from Ubuntu "24.04"
+cat sources.list => # Ubuntu sources have moved to /etc/apt/sources.list.d/ubuntu.sources
+
+4. The "sources.list.d/" directory has the repository information:
+    ".list" files and ".source" files
+
+cat ubuntu.sources =>
+
+Types: deb
+URIs: http://us.archive.ubuntu.com/ubuntu/
+Suites: noble noble-updates noble-backports
+Components: main restricted universe multiverse
+Signed-By: /usr/share/keyrings/ubuntu-archive-keyring.gpg
+
+--- the source file can also embed the gpg inline in the file
+
+https://askubuntu.com/questions/58364/whats-the-difference-between-multiverse-universe-restricted-and-main
+
+    - Main - Officially supported software.
+    - Restricted - Supported software that is not available under a completely free license.
+    - Universe - Community maintained software, i.e. not officially supported software.
+    - Multiverse - Software that is not free.
+
+5. the "gpg" file
+    - It is important to know what the "gpg" file is not an HTTPS certificate, it is used to verify that
+        the packages downloaded is not un-authorised altered
+
+6. Add a ppa - https://launchpad.net/~deadsnakes/+archive/ubuntu/ppa
+
+
+AUTOMATICALLY - The following commands add both the source and the "gpg" file
+
+    sudo add-apt-repository ppa:deadsnakes/ppa
+    sudo apt update
+
+MANUALLY - It is possible to manually add a repository
+    - https://unix.stackexchange.com/questions/730459/add-the-gpg-key-used-to-sign-the-packages-by-running-the-following-wget-gpg
+    - https://askubuntu.com/questions/1312464/how-to-get-the-gpg-key-for-a-repository
+    
+    1. Go to the page of the owner/name PPA on Launchpad: https://launchpad.net/~owner/+archive/ubuntu/name.
+        
+    2. Look for signing key's fingerprint on the page. In the page there should be a section "Fingerprint:" with the key fingerprint printed below.
+        You may need to click on "Technical details about this PPA" to see it.
+
+    3. Download the PPA key into a specific directory on your system.
+        - Download the key via the URL https://keyserver.ubuntu.com/pks/lookup?op=get&search=0x<fingerprint>, 
+        where <fingerprint> is the value you found in step 2.
+
+        - Dearmor the key and put it in /etc/apt/trusted.gpg.d/owner_ubuntu_name.gpg.
+            1. Name the downloaded file as "<repository-name>.asc"
+            2. gpg --dearmor <repository-name>.asc => generate a file named <repository-name>.asc.gpg
+            3. copy the file to any of the following directory "/etc/apt/keyrings", "/etc/apt/trusted.gpg.d", or "/usr/share/keyrings".
+
+    4. Create a file /etc/apt/sources.list.d/owner-ubuntu-name.list with these contents:
+        deb http://ppa.launchpad.net/owner/name/ubuntu <codename> main
+        where <codename> is what lsb_release -sc gives.
+
+
+The following command purge a repository by "ppa-purge"
+    sudo apt install ppa-purge - if not installed
+    sudo ppa-purge deadsnakes
+
