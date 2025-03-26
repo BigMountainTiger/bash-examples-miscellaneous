@@ -1,0 +1,17 @@
+https://git-scm.com/docs/git-rebase
+
+git-rebase - Reapply commits on top of another base tip
+
+1. Rebase is similar to 3 way merge
+2. Rebase applies all the commits after the common ancestor on top of the commit to rebase to
+3. It applies the commits one by one. If conflict occurs for multiple commits, you need to resolve it one by one
+4. If you take all the "current changes" during a conflict resolution, the commit is skipped
+5. Unlike merge, there is no rebase commit
+6. Rebase modifies the commit history, it is not suitable to use in a shared branch
+
+It may be a good idea to squash (git rebase -i) all the commits before the rebase to resolve the conflict only once
+
+git add .
+git rebase --continue
+
+to resolve the conflict

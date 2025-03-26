@@ -1,0 +1,44 @@
+When "git clone", the files download to local has the modification time at the "clone" time
+
+https://stackoverflow.com/questions/21735435/git-clone-changes-file-modification-time
+https://serverfault.com/questions/401437/how-to-retrieve-the-last-modification-date-of-all-files-in-a-git-repository
+
+https://git-scm.com/docs/pretty-formats
+ - --format="%at" => author date, UNIX timestamp
+ - --format="%ct" => committer date, UNIX timestamp 
+ - author date vs commit date - https://stackoverflow.com/questions/11856983/why-is-git-authordate-different-from-commitdate
+
+
+ script:
+
+ (
+    cd "the_directory_where_the_files_need_to_touch"
+
+    # touch the files so committer time is used as the modification time
+    # we can use the author time as well, whichever is appropriate
+    git ls-tree -r --name-only HEAD | while read filename; do
+        unixtime=$(git log -1 --format="%ct" -- "${filename}")
+        touchtime=$(date -d @$unixtime +'%Y%m%d%H%M.%S')
+
+        touch -t ${touchtime} "${filename}"
+    done
+
+    echo "Timezone $(date +'%:z %Z')"
+    echo "Local files"
+    find . -type f | sort | xargs -I {} ls -la "{}"
+    echo
+)
+
+Git by itself does not trace the commit time on a file but on a commit
+But it is possible to change the commit time of a file by 2 commits, which add a new commit with just that file:
+
+- git rm --cached -- a.txt
+- git commit -m "Temporarily remove the a.txt file"
+- git add -- a.txt
+- git commit -m "Add the a.txt file back"
+
+To verify run the follow to check the commit time "%ci":
+
+git ls-tree -r --name-only HEAD | while read filename; do
+   echo ${filename} - $(git log -1 --format="%B - %ci" -- "${filename}")
+done

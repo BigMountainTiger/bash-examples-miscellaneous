@@ -1,0 +1,11 @@
+This is to keep a note if Linux mint xfce pannel (taskbar) is messed up
+    - https://askubuntu.com/questions/224006/resetting-xfce-panels-to-default-settings
+
+
+The following step to reset it to the default
+
+1. Shut down the panel first, xfce4-panel --quit
+2. Kill the xfce4 configuration daemon, pkill xfconfd
+3. First delete settings for the panel, rm -rf ~/.config/xfce4/panel
+4. Clear out the settings for xfconfd, rm -rf ~/.config/xfce4/xfconf/xfce-perchannel-xml/xfce4-panel.xml
+5. Restart the panel, run xfce4-panel. This will respawn xfconfd automatically

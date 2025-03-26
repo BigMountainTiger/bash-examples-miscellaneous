@@ -1,0 +1,20 @@
+#!/bin/bash
+
+git fetch
+ACTIVE_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+pull() {
+    BRANCH=$1
+    git checkout $BRANCH
+    git pull
+    echo
+}
+
+# Need to list the branches to pull
+# pull feature/sbx
+# pull develop
+# pull release
+# pull master
+
+echo
+pull $ACTIVE_BRANCH

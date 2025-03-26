@@ -1,0 +1,40 @@
+#!/bin/bash
+
+echo 'Note: to print multiple line string, we need to use "cat <<<$THE_STRING", not echo'
+echo
+
+# Mult-line string
+DATA_VALUE="The value"
+
+THE_STRING='{
+    "key": "'$DATA_VALUE'"
+}'
+
+echo "1. Example to insert the value into the JSON string"
+cat <<<$THE_STRING
+
+# Escape the single quote
+echo
+THE_STRING='{
+    "key_1": "'$DATA_VALUE'",
+    "key_2": "'"This substring has a single quote ' here"'",
+}'
+
+echo "2. Example to escape the single quote"
+cat <<<$THE_STRING
+echo .............................
+echo "The first ' terminate previous substring"
+echo "The first \" starts the substring with single quote"
+echo "Add the string with single quote"
+echo "The second \" ends the substring with single quote"
+echo "The second ' starts the second substring"
+
+echo
+THE_STRING="{
+    'A'
+}"
+
+echo "3. It is possible to use double qoute for multi-line string"
+cat <<<$THE_STRING
+echo .............................
+echo "It is advantageous to use double quote if the data has a lot of single quote"
