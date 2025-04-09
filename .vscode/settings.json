@@ -34,7 +34,8 @@
     // redhat
     "redhat.telemetry.enabled": false,
     "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format"
+        "editor.defaultFormatter": "foxundermoon.shell-format",
+        "editor.tabSize": 4
     },
     "diffEditor.ignoreTrimWhitespace": false,
     "workbench.editor.empty.hint": "hidden"
