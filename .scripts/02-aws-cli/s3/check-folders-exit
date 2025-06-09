@@ -1,49 +1,49 @@
 #!/bin/bash
 
 if [[ -z "$ENV" ]]; then
-  ENV="sbx"
-  echo "ENV is not set, default to $ENV"
+    ENV="sbx"
+    echo "ENV is not set, default to $ENV"
 fi
 
 BUCKET="the-bucket-name"
 FOLDER_PREFIX="the/prefix/to/the/folder"
 
 declare -a FOLDERS=(
-  "folder-name-1"
-  "folder-name-2"
+    "folder-name-1"
+    "folder-name-2"
 )
 
 yellow() {
-  echo '\033[1;33m'$1'\033[0m'
+    echo '\033[1;33m'$1'\033[0m'
 }
 
 found=()
 missing=()
 check_s3_folder_exists() {
-  FOLDER="$1"
-  S3_PATH="s3://$BUCKET/$FOLDER"
-  if [ -n "$FOLDER_PREFIX" ]; then
-    S3_PATH="s3://$BUCKET/$FOLDER_PREFIX/$FOLDER"
-  fi
+    FOLDER="$1"
+    S3_PATH="s3://$BUCKET/$FOLDER"
+    if [ -n "$FOLDER_PREFIX" ]; then
+        S3_PATH="s3://$BUCKET/$FOLDER_PREFIX/$FOLDER"
+    fi
 
-  RESPONSE="$(aws s3 ls "$S3_PATH")"
-  if [[ $RESPONSE == *"$FOLDER"* ]]; then
-    found+=($FOLDER)
-  else
-    missing+=($FOLDER)
-  fi
+    RESPONSE="$(aws s3 ls "$S3_PATH")"
+    if [[ $RESPONSE == *"$FOLDER"* ]]; then
+        found+=($FOLDER)
+    else
+        missing+=($FOLDER)
+    fi
 }
 
 print_result() {
-  arr=("$@")
-  for f in "${arr[@]}"; do
-    echo "$f"
-  done
+    arr=("$@")
+    for f in "${arr[@]}"; do
+        echo "$f"
+    done
 }
 
 for f in "${FOLDERS[@]}"; do
-  echo "Checking $f"
-  check_s3_folder_exists $f
+    echo "Checking $f"
+    check_s3_folder_exists $f
 done
 
 echo -e "$(yellow "\nFound s3 folders")"
