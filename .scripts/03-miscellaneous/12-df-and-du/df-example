@@ -1,0 +1,9 @@
+#!/bin/bash
+
+# df --help
+# Show information about the file system on which each FILE resides,
+# It shows each file system and where it is mounted to
+
+# For example:
+# -h (human readable) is the most common option
+df -h
