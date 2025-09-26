@@ -1,0 +1,21 @@
+PEM (Privacy Enhanced Mail)
+- It is a file format, text/base64
+- PEM files are easily identifiable by their distinctive headers and footers,
+    -----BEGIN CERTIFICATE----- / -----END CERTIFICATE-----
+    -----BEGIN RSA PRIVATE KEY----- / -----END RSA PRIVATE KEY-----
+
+DER (Distinguished Encoding Rules) 
+- It is binary format
+- Smaller in size than PEM
+
+CERT 
+- It is used by update-ca-certificates, it look for files with ".crt" extension of PEM format
+- It is a file extension indicate the file is a cert file
+- It can be of perm format
+
+
+update-ca-certificates
+- The command creates or updates a single, consolidated file containing all trusted CA certificates,
+    typically located at /etc/ssl/certs/ca-certificates.crt
+- It scans /usr/local/share/ca-certificates for files with ".crt" extension and add individual symlinks in /etc/ssl/certs 
+- without the -f option, the update-ca-certificates does not remove the symlinks even when the ".cert" files are deleted

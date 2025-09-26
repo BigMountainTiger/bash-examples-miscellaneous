@@ -1,0 +1,24 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]; then
+    exec sudo bash "$0" "$@"
+    exit
+fi
+
+SERVER="$1"
+
+if [ "$SERVER" = "" ]; then
+    echo "You need to provide the server domain name i.e. ssl-load-certificate www.google.com"
+    exit
+fi
+
+CERT_DIR="/usr/local/share/ca-certificates/ATemp-install"
+CERT_PATH="$CERT_DIR/$SERVER.crt"
+
+if ! [ -f "$CERT_PATH" ]; then
+    echo "The file $CERT_PATH does not exist"
+    exit
+fi
+
+rm $CERT_PATH
+update-ca-certificates -f | grep $SERVER

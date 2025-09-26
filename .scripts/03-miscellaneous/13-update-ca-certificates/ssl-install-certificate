@@ -1,0 +1,32 @@
+#!/bin/bash
+
+if [ "$EUID" -ne 0 ]; then
+    exec sudo bash "$0" "$@"
+    exit
+fi
+
+SERVER="$1"
+
+if [ "$SERVER" = "" ]; then
+    echo "You need to provide the server domain name i.e. ssl-load-certificate www.google.com"
+    exit
+fi
+
+PORT="443"
+
+# put all the downloaded cert file in ATemp-install directory 
+# so it wont mess up with others
+CERT_DIR="/usr/local/share/ca-certificates/ATemp-install"
+CERT_PATH="$CERT_DIR/$SERVER.crt"
+
+# Get the cert from the server and save it to /usr/local/share/ca-certificates
+mkdir -p $CERT_DIR
+openssl s_client -showcerts -servername "$SERVER" \
+    -connect "$SERVER":"$PORT" </dev/null 2>/dev/null \
+    | openssl x509 -outform PEM >"$CERT_PATH"
+
+ls -l $CERT_PATH
+
+# update-ca-certificates scans /usr/local/share/ca-certificates for files with ".crt" extension
+# need -f option to fully refresh the symlinks in the /etc/ssl/certs
+update-ca-certificates -f | grep $SERVER

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+# This is not needed to run update-ca-certificates
+# Keep here for reference only
+
+PEM_FILE_PATH="the path to the pem file"
+DER_FILE_PATH="the path to the der file"
+
+# This is the command
+# openssl x509 -outform der -in $PEM_FILE_PATH -out $DER_FILE_PATH
