@@ -1,0 +1,12 @@
+#!/bin/bash
+
+WORKING_DIR="."
+directories=($(cd $WORKING_DIR && find . -mindepth 1 -maxdepth 1 -type d -printf '%f\n'))
+
+# If need to sort
+directories=($(echo "${directories[@]}" | tr ' ' '\n' | sort))
+
+# It is possible to put the directory names into an array and then loop through it
+for directory in "${directories[@]}"; do
+  echo "$directory"
+done

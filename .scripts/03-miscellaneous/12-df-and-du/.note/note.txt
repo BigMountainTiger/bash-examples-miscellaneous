@@ -1,0 +1,7 @@
+The commands
+
+df
+du
+ncdu
+
+They can help to find the large disk usages and help to identify the folder to clean

@@ -1,0 +1,10 @@
+#!/bin/bash
+
+a_function() {
+    echo "return is the command to exit a function"
+
+    return
+    echo "Nothing is echoed here"
+}
+
+a_function

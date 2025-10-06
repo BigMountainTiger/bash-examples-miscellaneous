@@ -1,0 +1,15 @@
+#!/bin/bash
+
+a=()
+
+append_to_array() {
+    a+=($1)
+}
+
+append_to_array 1
+append_to_array 2
+append_to_array 3
+
+for v in "${a[@]}"; do
+    echo $v
+done

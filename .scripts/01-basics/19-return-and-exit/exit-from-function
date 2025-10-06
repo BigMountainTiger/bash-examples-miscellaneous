@@ -1,0 +1,10 @@
+#!/bin/bash
+
+a_function() {
+    echo "exit in a function exits the script execution"
+    exit
+}
+
+a_function
+
+echo "Nothing is echoed here because script exits"

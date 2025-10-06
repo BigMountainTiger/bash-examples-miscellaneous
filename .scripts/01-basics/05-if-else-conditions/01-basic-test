@@ -21,4 +21,10 @@ fi
 
 echo
 # https://www.baeldung.com/linux/bash-single-vs-double-brackets
+echo "The begin and end spaces in the brackets ([]) are due to historical reasons and mandatory"
 echo "[[ double bracket is non-standard (non POSIX) ]]"
+
+
+# It's important to note that when using single brackets ([ ]),
+# variables should be quoted to prevent word splitting and unexpected behavior,
+# especially when dealing with strings containing spaces.

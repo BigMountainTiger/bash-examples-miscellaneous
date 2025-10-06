@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# du --help
+# Summarize device usage of the set of FILEs, recursively for directories.
+# If directory is not specified, it is the $PWD (present working directory)
+
+# For example:
+# -h is human readable
+# --max-depth 1 is the most common option to display the information for only the top level directories
+du -h --max-depth 1 .
+
+# sudo is needed if looking at directory outside of the $HOME
+sudo du -h --max-depth 1 /
+
+# It is easier to use -s (summary) to replace "-max-depth 1" to save some typing
+# It requres the "*" to indicates the summary of list of the directories
+# Without the "*", only the summary of one directory is displayed in the result
+du -hs *

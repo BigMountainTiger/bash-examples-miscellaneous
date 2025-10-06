@@ -1,0 +1,11 @@
+#!/bin/bash
+
+finally() {
+    echo "This function always run regardless how script exists"
+}
+
+trap finally EXIT
+
+echo "Exit the script with error"
+exit 1
+

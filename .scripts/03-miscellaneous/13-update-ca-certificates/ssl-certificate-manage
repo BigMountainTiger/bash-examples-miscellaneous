@@ -1,0 +1,48 @@
+#!/bin/bash -e
+
+SERVER="$1"
+ACTION="$2"
+
+if [[ "$ACTION" != "-i" && "$ACTION" != "-d" ]]; then
+    echo "Only 2 actions are supported, -i (install) or -d (delete)"
+    echo "for example: ssl-certificate-manage domain-name (e.g. www.google.com) -i (install) or -d (delete)"
+    exit
+fi
+
+if [ "$SERVER" = "" ]; then
+    echo "You need to provide the server domain name"
+    echo "for example: ssl-load-certificate domain-name (e.g. www.google.com) $ACTION"
+    exit
+fi
+
+# Save the ".cert" to ATemp-install
+CERT_DIR="/usr/local/share/ca-certificates/ATemp-install"
+CERT_PATH="$CERT_DIR/$SERVER.crt"
+
+if [ "$EUID" -ne 0 ]; then
+    exec sudo bash "$0" "$@"
+    exit
+fi
+
+case "$ACTION" in
+    "-i")
+        PORT="443"
+
+        mkdir -p $CERT_DIR
+        openssl s_client -showcerts -servername "$SERVER" \
+            -connect "$SERVER":"$PORT" </dev/null 2>/dev/null \
+            | openssl x509 -outform PEM >"$CERT_PATH"
+
+        ls -l $CERT_PATH
+        ;;
+    "-d")
+        rm -f $CERT_PATH
+        ;;
+    *)
+        exit
+        echo "Wrong command"
+        ;;
+esac
+
+update-ca-certificates -f 2>/dev/null | grep $SERVER
+ls -l /etc/ssl/certs | grep $SERVER

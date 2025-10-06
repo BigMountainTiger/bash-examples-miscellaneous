@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# ncdu is not installed by default in Ubuntu
+# It is bacsically du, but have navigation capability
+
+
+# ncdu is pretty nice to use
+sudo ncdu /
