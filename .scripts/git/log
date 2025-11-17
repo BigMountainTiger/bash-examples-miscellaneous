@@ -1,0 +1,16 @@
+#!/bin/bash -e
+
+# Need to make the variables available
+PROJECT_BASE="/home/song/Sandbox"
+PROJECT_NAME="bash-examples-miscellaneous"
+
+
+echo -e "$PROJECT_NAME:\n"
+cd $PROJECT_BASE/$PROJECT_NAME
+
+git fetch
+if [[ $# -eq 0 ]]; then
+    git log -2
+else
+    git log "$@"
+fi
