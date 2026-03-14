@@ -1,0 +1,6 @@
+#!/bin/bash
+
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
+WORKSPACE="$SCRIPT_PATH/../workspace"
+
+rm -rf $WORKSPACE

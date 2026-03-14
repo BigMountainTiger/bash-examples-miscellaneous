@@ -1,13 +1,23 @@
 #!/bin/bash
 
-PROJECT="bash-examples-miscellaneous"
+# Need to make the variables available
+PROJECT_BASE="/home/song/Sandbox"
+PROJECT_NAME="bash-examples-miscellaneous"
+
+ALLOWED_BRANCH="master"
+COMMIT_MESSAGE="Updated the bash-examples-miscellaneous"
+
+ACTIVE_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+if [ "$ACTIVE_BRANCH" != "$ALLOWED_BRANCH" ]; then
+    echo "Disabled for all branches except $ACTIVE_BRANCH"
+    exit 1
+fi
+
 
 git reset --soft HEAD~
-git add-commit -m "Updated the $PROJECT"
+git add-commit -m "$COMMIT_MESSAGE"
 git push -f
 
-echo
-echo "Wait for a second ..."
-sleep 1
-
+echo && git fetch
+echo "Wait for a second ..." && sleep 1
 git log -2

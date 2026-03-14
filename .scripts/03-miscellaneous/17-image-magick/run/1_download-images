@@ -1,0 +1,20 @@
+#!/bin/bash
+
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
+WORKSPACE="$SCRIPT_PATH/../workspace"
+DOWNLOAD_DIR="$WORKSPACE/download"
+
+IMAGE_URL_TEMPLATE="https://sutra.ddm.org.tw/ebook/06/files/mobile/%s.jpg"
+
+(
+    rm -rf "$DOWNLOAD_DIR"
+    mkdir -p "$DOWNLOAD_DIR"
+)
+
+(
+    cd "$DOWNLOAD_DIR" || exit
+
+    for ((i=0; i<=96; i++)); do
+        wget $(printf $IMAGE_URL_TEMPLATE $i)
+    done
+)

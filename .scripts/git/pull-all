@@ -1,0 +1,28 @@
+#!/bin/bash -e
+
+# Need to make the variables available
+PROJECT_BASE="/home/song/Sandbox"
+PROJECT_NAME="bash-examples-miscellaneous"
+
+
+echo -e "$PROJECT_NAME:\n"
+cd $PROJECT_BASE/$PROJECT_NAME
+
+git fetch
+ACTIVE_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+
+fetch() {
+    BRANCH=$1
+    git checkout $BRANCH
+    git pull
+    echo
+}
+
+# fetch feature/sbx
+# fetch develop
+# fetch release
+fetch master
+
+echo
+git checkout $ACTIVE_BRANCH
+git pull

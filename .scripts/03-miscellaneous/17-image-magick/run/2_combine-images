@@ -1,0 +1,16 @@
+#!/bin/bash
+
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
+WORKSPACE="$SCRIPT_PATH/../workspace"
+DOWNLOAD_DIR="$WORKSPACE/download"
+COMBINED_DIR="$WORKSPACE/combined"
+
+(
+    rm -rf "$COMBINED_DIR"
+    mkdir -p "$COMBINED_DIR"
+)
+
+(
+    cp $DOWNLOAD_DIR/1.jpg $COMBINED_DIR
+    cp $DOWNLOAD_DIR/2.jpg $COMBINED_DIR
+)

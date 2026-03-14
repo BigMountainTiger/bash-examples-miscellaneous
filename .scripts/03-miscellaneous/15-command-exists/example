@@ -1,0 +1,24 @@
+#!/bin/bash
+
+command_exists() {
+    # both 1 & 2 to /dev/null
+    # only status is of interest 0 - exist, None zero - does not exist
+    command -v "$1" >/dev/null 2>&1
+}
+
+cmd="git"
+
+if command_exists $cmd; then
+    echo "$cmd exists"
+else
+    echo "$cmd does not exists"
+fi
+
+
+cmd="non_exist_command"
+
+if command_exists $cmd; then
+    echo "$cmd exists"
+else
+    echo "$cmd does not exists"
+fi

@@ -1,0 +1,22 @@
+#!/bin/bash
+
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
+cd "$SCRIPT_PATH" || exit 1
+
+merge_csv_files() {
+    SOURCE_FOLDER="$1"
+    TARGET_FILE_PATH="$2"
+
+    for f in "$SOURCE_FOLDER"/*; do
+        if [[ -f "$f" ]]; then
+            if [[ ! -s "$f" ]] || [[ -n "$(tail -c 1 <"$f")" ]]; then
+                echo >> "$f"
+            fi
+        fi
+    done
+
+    head -n 1 "$SOURCE_FOLDER"/f1.csv > "$TARGET_FILE_PATH"
+    tail -n +2 -q "$SOURCE_FOLDER"/*.csv >> "$TARGET_FILE_PATH"
+}
+
+merge_csv_files data merged.csv

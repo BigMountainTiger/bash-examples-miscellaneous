@@ -1,0 +1,4 @@
+apt-cache policy imagemagick
+sudo apt install imagemagick
+
+convert --version
