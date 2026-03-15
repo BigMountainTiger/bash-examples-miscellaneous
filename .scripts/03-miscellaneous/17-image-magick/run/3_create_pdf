@@ -1,0 +1,15 @@
+#!/bin/bash
+
+SCRIPT_PATH="$(dirname -- "${BASH_SOURCE[0]}")"
+WORKSPACE="$SCRIPT_PATH/../workspace"
+COMBINED_DIR="$WORKSPACE/combined"
+FINAL_DIR="$WORKSPACE/final"
+
+(
+    rm -rf "$FINAL_DIR"
+    mkdir -p "$FINAL_DIR"
+)
+
+(
+    convert -quality 30 -density 130 $(ls -v $COMBINED_DIR/*.jpg) $FINAL_DIR/yao_shi_fo.pdf
+)
