@@ -1,0 +1,24 @@
+~ (Tilde): Vertical Navigation
+=> The tilde symbol is used for vertical movement back through the single branch's history.
+----------------------------------------------------------------
+1. If HEAD is not a merge commit, HEAD~1 is simply the parent commit
+2. If HEAD is a merge commit, HEAD~1 is the parent in the merged "into" branch
+
+Note: HEAD~ is the same as HEAD~1
+
+
+^ (Caret): Horizontal Navigation
+=> The caret symbol is used for horizontal selection between multiple parents, typically occurring after a merge.
+----------------------------------------------------------------
+1. HEAD^1 is the commit in the 1st parent, in the merged "into" branch
+2. HEAD^2 is the commit in the 2nd parent, in the merged "from" branch
+
+Note: 
+HEAD^ is the same as HEAD^1 (also the same as HEAD~1)
+If HEAD is not a merge commit, HEAD^2 is an error
+
+
+TIPS for Combining Symbols
+----------------------------------------------------------------
+1. HEAD~2^2: Move back two generations vertically, then select the second parent (horizontal) of that commit.
+2. HEAD^^: This is equivalent to HEAD~2 because the first parent of the first parent is just the grandparent

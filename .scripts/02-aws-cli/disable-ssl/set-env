@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export AWS_CA_BUNDLE=""
+export AWS_SSL_VERIFY=false
+export PYTHONWARNINGS="ignore:Unverified HTTPS request"
+
+# Using the Shared Configuration File
+# in the file => ~/.aws/config
+# Add the following lines to the [default] section of the file:
+# [default]
+# https_validate_certificates = False

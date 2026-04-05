@@ -9,6 +9,21 @@ https://git-scm.com/docs/pretty-formats
  - author date vs commit date - https://stackoverflow.com/questions/11856983/why-is-git-authordate-different-from-commitdate
 
 
+-----------------------------------------------------------------------------
+In Git, the Commit Date is typically LATER THAN or EQUAL to the Author Date,
+because they represent two different stages of a commit's lifecycle
+
+1. Rebasing: When you rebase a branch, Git creates new commits with the original Author Date
+    but updates the Commit Date to the time of the rebase.
+2. Amending: Running git commit --amend updates the Commit Date to "now,"
+    while preserving the original Author Date
+3. Cherry-picking: Applying a commit from one branch to another sets the Commit Date to the time of the cherry-pick,
+    while keeping the original Author Date
+4. Applying Patches: If you receive a patch via email (e.g., git am), the Author Date is when the sender wrote it,
+    and the Commit Date is when you applied it to your repo
+
+
+-----------------------------------------------------------------------------
  script:
 
  (

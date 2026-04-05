@@ -1,0 +1,3 @@
+To visualize your Git commit history as a graph
+-------------------------------------------------------------
+git log --graph --oneline --all --decorate

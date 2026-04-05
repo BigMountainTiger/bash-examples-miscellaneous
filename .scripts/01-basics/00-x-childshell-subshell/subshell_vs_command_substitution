@@ -1,0 +1,22 @@
+#!/bin/bash
+
+# In Bash, command substitution and subshells are related but serve different purposes.
+# ------------------------------------------------------------------------------------
+# Command substitution actually uses a subshell to execute its contents,
+# but it specifically returns the output of those commands to the parent shell
+
+# Simple subshell example
+(
+    echo "This is a subshell, it wont affect the parent shell environment"
+    cd ..
+)
+
+# Command substitution example
+TEXT="""$(
+    cd ..
+
+    echo "This is a command substitution, it also uses a subshell but it returns the output to the parent shell"
+    echo "The current directory is: $(pwd)"
+)"""
+
+echo "$TEXT"

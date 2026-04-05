@@ -12,5 +12,16 @@ COMBINED_DIR="$WORKSPACE/combined"
 
 (
     cp $DOWNLOAD_DIR/1.jpg $COMBINED_DIR
-    cp $DOWNLOAD_DIR/2.jpg $COMBINED_DIR
+    cp $DOWNLOAD_DIR/96.jpg $COMBINED_DIR/49.jpg
+
+    max=47
+    page_number=1
+    for ((i=1; i<=max; i++)); do
+        first=$((i*2))
+        second=$((first+1))
+        page_number=$((page_number+1))
+
+        # Read from right to the left
+        convert $DOWNLOAD_DIR/$second.jpg $DOWNLOAD_DIR/$first.jpg +append $COMBINED_DIR/$page_number.jpg
+    done
 )

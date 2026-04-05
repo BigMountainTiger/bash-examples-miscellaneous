@@ -40,5 +40,6 @@
     },
     "diffEditor.ignoreTrimWhitespace": false,
     "workbench.editor.empty.hint": "hidden",
+    "workbench.colorTheme": "Dark Modern",
     "gitlens.mode.active": "zen"
 }
