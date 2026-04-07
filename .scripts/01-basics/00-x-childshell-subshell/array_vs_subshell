@@ -1,0 +1,8 @@
+#!/bin/bash
+
+# () serve two distinct purposes based on their placement: 
+# 1 => Array initialization (when preceded by an = sign) 
+# 2 => Subshell execution (when used as a standalone command block). 
+
+the_array_variable=("val1" "val2" "val3")
+echo "${the_array_variable[@]}"

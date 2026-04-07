@@ -10,8 +10,8 @@ Note: HEAD~ is the same as HEAD~1
 ^ (Caret): Horizontal Navigation
 => The caret symbol is used for horizontal selection between multiple parents, typically occurring after a merge.
 ----------------------------------------------------------------
-1. HEAD^1 is the commit in the 1st parent, in the merged "into" branch
-2. HEAD^2 is the commit in the 2nd parent, in the merged "from" branch
+1. HEAD^1 is the commit in the 1st parent, it is the merged "into" branch
+2. HEAD^2 is the commit in the 2nd parent, it is the merged "from" branch
 
 Note: 
 HEAD^ is the same as HEAD^1 (also the same as HEAD~1)
