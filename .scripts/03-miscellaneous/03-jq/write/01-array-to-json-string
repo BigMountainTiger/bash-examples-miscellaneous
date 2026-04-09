@@ -1,0 +1,7 @@
+#!/bin/bash
+
+a=("item No.1" "item No.2" "item No.3")
+
+json_string="$(jq -n '$ARGS.positional' --args "${a[@]}")"
+
+echo "$json_string"
