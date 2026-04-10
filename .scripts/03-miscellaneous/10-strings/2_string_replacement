@@ -1,0 +1,12 @@
+#!/bin/bash
+
+template_string="The value is: {{VALUE}}"
+value="42"
+
+# double slash replaces all occurrences of the pattern
+result_string="${template_string//\{\{VALUE\}\}/$value}"
+echo "$result_string"
+
+# single slash replaces the first occurrence of the pattern
+result_string="${template_string/\{\{VALUE\}\}/$value}"
+echo "$result_string"
