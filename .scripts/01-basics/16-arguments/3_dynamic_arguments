@@ -1,0 +1,21 @@
+#!/bin/bash
+
+args=()
+args+=("log")
+args+=("-3")
+args+=("--oneline")
+
+# command arguments can be built dynamically in an array
+git "${args[@]}"
+
+echo -------------------------------
+
+oneline="true"
+
+args=()
+if [[ "$oneline" == "true" ]]; then
+    args+=("--oneline")
+fi
+
+# partial arguments is also possible
+git log -3 "${args[@]}"

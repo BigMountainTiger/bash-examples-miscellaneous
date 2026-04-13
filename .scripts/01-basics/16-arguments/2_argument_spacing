@@ -1,0 +1,11 @@
+#!/bin/bash
+
+# 1. In Bash, spacing is the primary way the shell distinguishes between separate arguments
+# 2. Bash treats one or more consecutive whitespace characters as a single delimiter
+
+
+git log -3 --oneline
+
+# Number of spaces between arguments does not matter
+echo -------------------------------
+git log    -3    --oneline

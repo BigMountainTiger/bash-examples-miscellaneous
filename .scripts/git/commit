@@ -13,11 +13,14 @@ if [ "$ACTIVE_BRANCH" != "$ALLOWED_BRANCH" ]; then
     exit 1
 fi
 
-
 git reset --soft HEAD~
-git add-commit -m "$COMMIT_MESSAGE"
+git add -A && git commit -m "$COMMIT_MESSAGE"
 git push -f
 
 echo && git fetch
-echo "Wait for a second ..." && sleep 1
+echo -e "Wait for a second ...\n" && sleep 1
+
+echo "Changes in the last commit:"
+git diff HEAD~1 HEAD --name-only && echo
+
 git log -2

@@ -1,10 +1,31 @@
 #!/bin/bash
 
 # Only keep the top-level directories that have changed in the last commit
-# 1. he grep / ensures we only get directories,
-# 2. cut -d/ -f1 gets the top-level directory,
-# 3. sort -u removes duplicates
+# 1. the "grep /" ensures we only get directories,
+# 2. "cut -d/ -f1" gets the top-level directory,
+# 3. "sort -u" removes duplicates (-u => unique)
 
-D=($(git diff --name-only HEAD^1 HEAD | grep / | cut -d/ -f1 | sort -u))
+# The effect of the "--relative" argument
+# 1. If we are in a subdirectory, we only get the directories that are relative to that subdirectory
+# 2. The result path is relative to the current directory
 
-echo "${D[@]}"
+list_modified_directories() {
+    D=($(git diff --relative --name-only HEAD^1 HEAD | grep / | cut -d/ -f1 | sort -u))
+    printf "%s\n" "${D[@]}"
+    echo "Number of modified directories: ${#D[@]}"
+}
+
+(
+    pwd
+    list_modified_directories
+)
+
+(   
+    echo && cd .scripts && pwd
+    list_modified_directories
+)
+
+(   
+    echo && cd .scripts/01-basics && pwd
+    list_modified_directories
+)

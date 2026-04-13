@@ -13,7 +13,7 @@ echo '$1'" is the first argument- $1"
 echo
 echo "Looping all the argumets"
 # In a special case
-# .scripts/01-basics/16-arguments/example a b "c c" may be recognized as 4 arguments
+# .scripts/01-basics/16-arguments/1_basics a b "c c" may be recognized as 4 arguments
 for arg in $@; do
     echo $arg
 done

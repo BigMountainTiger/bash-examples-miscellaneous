@@ -11,7 +11,7 @@ cd $PROJECT_BASE/$PROJECT_NAME
 git fetch
 ACTIVE_BRANCH=$(git rev-parse --abbrev-ref HEAD)
 
-fetch() {
+pull() {
     BRANCH=$1
     git checkout $BRANCH
     git pull
@@ -21,7 +21,7 @@ fetch() {
 # fetch feature/sbx
 # fetch develop
 # fetch release
-fetch master
+pull master
 
 echo
 git checkout $ACTIVE_BRANCH
