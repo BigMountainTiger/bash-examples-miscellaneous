@@ -1,0 +1,60 @@
+#!/bin/bash
+
+A="abc ,,, def,   xy    zz , xy    zz  ,www,"
+
+# 1. Read into array A, using comma as the delimiter
+# - If the last element is empty, it will be ignored.
+# - It should be OK for most of the cases. If we need it, we can add a "," at the end of the string.
+IFS=',' read -r -a array <<< "$A"
+
+echo && echo 1. Original array
+echo ----------------------------------------------
+for i in "${array[@]}"; do
+    echo "\"$i\""
+done
+
+# 2. Loop through the array and trim whitespace * remove empty elements
+new_array=()
+for i in "${!array[@]}"; do
+    element="$(echo "${array[$i]}" | xargs)" 
+
+    if [[ -n "$element" ]]; then
+        new_array+=("$element")
+    fi
+done
+
+echo && echo 2. Trimmed array
+echo ----------------------------------------------
+for i in "${new_array[@]}"; do
+    echo "\"$i\""
+done
+
+# 3. Get the unique elements in the array
+mapfile -t unique_array <<<"$(printf "%s\n" "${new_array[@]}" | uniq)"
+echo && echo 3. Unique elements
+echo ----------------------------------------------
+for i in "${unique_array[@]}"; do
+    echo "\"$i\""
+done
+
+# 4. Get the duplicated elements in the array
+mapfile -t duplicated_array <<<"$(printf "%s\n" "${new_array[@]}" | sort | uniq -d)"
+echo && echo 4. Duplicated elements
+echo ----------------------------------------------
+for i in "${duplicated_array[@]}"; do
+    echo "\"$i\""
+done
+
+# 5. Sort the array
+mapfile -t sorted_array <<<"$(printf "%s\n" "${new_array[@]}" | sort)"
+echo && echo 5. Sorted array
+echo ----------------------------------------------
+for i in "${sorted_array[@]}"; do
+    echo "\"$i\""
+done
+
+# 6. To json array, -c means compact - single line. It may be needed in some cases
+json_array="$(jq -n '$ARGS.positional' -c '.' --args "${unique_array[@]}")"
+echo && echo 6. Json array
+echo ----------------------------------------------
+echo "$json_array"

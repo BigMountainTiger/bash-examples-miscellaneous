@@ -1,0 +1,8 @@
+#!/bin/bash
+
+str="  abc  def  "
+echo "Original string: '$str'"
+
+
+trimmed_str="$(echo "$str" | xargs)"
+echo "Trimmed string: '$trimmed_str'"

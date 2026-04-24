@@ -1,0 +1,42 @@
+#!/bin/bash
+
+# Definition
+# ---------------------------------------------------------------------------------
+# 1. IFS refers to the "Internal Field Separator",
+#   a special environment variable that defines the characters used for word splitting and line parsing.
+# 2. By default, IFS includes space, tab, and newline characters.
+
+echo Default IFS value: "${IFS@Q}"
+echo ----------------------------------------------
+
+# Common use cases
+# ---------------------------------------------------------------------------------
+# 1. Splitting Strings: Change IFS to a specific character (like a colon or comma) to parse delimited data.
+# 2. Reading Files: Used with the read command to split input lines into multiple variables
+# 3. Array Joining: When expanding an array with "${array[*]}", Bash uses the first character of IFS as the delimiter between elements.
+
+# Example
+# If the last element is empty, it will be ignored.
+# It should be OK for most of the cases. If we need it, we can add a "," at the end of the string.
+A="abc ,,, def,  xy    zz , xy    zz    ,www ,"
+
+IFS=',' read -r -a array <<<"$A"
+echo && echo Split string by read
+echo ----------------------------------------------
+for i in "${array[@]}"; do
+    echo "\"$i\""
+done
+
+# readarray -d ',' -t array <<<"$A"
+# readarray behave weird. Need futher investigation before use
+
+
+# Scope
+# ---------------------------------------------------------------------------------
+# 1. Change IFS in a subshell to avoid affecting the global IFS value.
+# 2. Use "local IFS=','" inside a function to limit the scope in the function
+# 3. Add IFS='THE WANTED SEPARATOR' (without ;) in the line to affect only that line
+# 4. "unset IFS" to restore the default IFS value after temporary change to prevent problems
+
+# To print the IFS
+echo && echo Current IFS value: "${IFS@Q}"

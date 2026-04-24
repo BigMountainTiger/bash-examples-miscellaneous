@@ -1,0 +1,21 @@
+#!/bin/bash
+
+# * [^[:space:]]: Matches any character that is not a whitespace character
+
+check() {
+    TEXT="$1"
+
+    if ! (grep -q '[^[:space:]]' <<<"$TEXT"); then
+        echo "The file only contains spaces."
+    else
+        echo "The file contains non-space characters."
+    fi
+}
+
+# 1. Test with only spaces
+text=$'   \t\n  \t\n  '
+check "$text"
+
+# 2. Test with non-space characters
+echo && text=$'   \t\n  \t\n  A  \t\n  '
+check "$text"
