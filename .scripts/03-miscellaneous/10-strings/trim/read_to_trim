@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Single line trimming with read
+# ---------------------------------------------------------------------------------
+echo && echo "Trimming single line string with read"
+str="  abc           def ghi  "
+echo "Original string: '$str'"
+
+
+read -rd '' trimmed_str<<<"$str"
+echo "Trimmed string: '$trimmed_str'"
+
+
+# How about multiple lines?
+# ---------------------------------------------------------------------------------
+echo && echo "Trimming multi-line string with read"
+multi_line_str=" 
+abc
+def  ghi
+
+
+jkl
+
+
+"
+echo "Original multi-line string: '$multi_line_str'"
+read -rd '' trimmed_multi_line_str<<<"$multi_line_str"
+echo "Trimmed multi-line string: '$trimmed_multi_line_str'"
+
+
+# Note: read with -d '' will trim leading and trailing whitespace, but it will preserve internal spaces and new lines.
+# '  abc        def ghi  ' => 'abc        def ghi'
+
+

@@ -1,0 +1,32 @@
+#!/bin/bash
+
+# Single line trimming with xargs
+# ---------------------------------------------------------------------------------
+echo && echo "Trimming single line string with xargs"
+str="  abc  def ghi  "
+echo "Original string: '$str'"
+
+
+trimmed_str="$(echo "$str" | xargs)"
+echo "Trimmed string: '$trimmed_str'"
+
+
+# How about multiple lines?
+# ---------------------------------------------------------------------------------
+echo && echo "Trimming multi-line string with xargs"
+multi_line_str=" 
+abc
+def  ghi  
+
+
+jkl
+"
+
+echo "Original multi-line string: '$multi_line_str'"
+
+trimmed_multi_line_str="$(echo "$multi_line_str" | xargs)"
+echo "Trimmed multi-line string: '$trimmed_multi_line_str'"
+
+
+# Note: xargs will trim leading and trailing whitespace, and also reduce multiple interal spaces or new line to a single space.
+# '  abc        def ghi  ' => 'abc def ghi'

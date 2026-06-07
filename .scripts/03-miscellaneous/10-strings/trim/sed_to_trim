@@ -1,0 +1,34 @@
+#!/bin/bash
+
+# Single line trimming with sed
+# ---------------------------------------------------------------------------------
+echo && echo "Trimming single line string with xargs"
+str="  abc  def ghi  "
+echo "Original string: '$str'"
+
+
+# Use -e to specify multiple editing commands
+trimmed_str="$(echo "$str" | sed -e 's/^[[:space:]]*//' -e 's/[[:space:]]*$//')"
+echo "Trimmed string: '$trimmed_str'"
+
+
+# How about multiple lines?
+# ---------------------------------------------------------------------------------
+echo && echo "Trimming multi-line string with xargs"
+multi_line_str=" 
+abc
+def  ghi  
+
+
+jkl
+"
+
+echo "Original multi-line string: '$multi_line_str'"
+
+# Use '; ' to separate multiple editing commands in sed, same result as using -e
+trimmed_multi_line_str="$(echo "$multi_line_str" | sed 's/^[[:space:]]*//;s/[[:space:]]*$//')"
+echo "Trimmed multi-line string: '$trimmed_multi_line_str'"
+
+
+# Note: sed will trim leading and trailing whitespace, but it will not change internal spaces or new lines.
+# '  abc        def ghi  ' => 'abc def ghi'
