@@ -1,0 +1,47 @@
+Using the Built-in IBus Framework:
+  1. (This step is probably not necessary *) Install pinyin input method:
+    To install: |
+      sudo apt update
+      sudo apt install ibus-libpinyin
+    To uninstall: |
+      sudo apt remove ibus-libpinyin
+
+  2. Settings -> System -> Region & Language -> Manage Installed Languages:
+    Install: Simplified Chinese / Traditional Chinese
+    Keyboard input method system: IBus
+    Need RESTART: Need to restart the computer to make the changes take effect
+
+  3. Settings -> Keyboard -> Input Methods:
+    Add: Chinese input method (e.g., Pinyin) to the input method
+
+  4. Switch input language:
+    Default: Super + Space
+    Make change:
+      - Settings -> Keyboard -> Keyboard Shortcuts -> View and Customize Shortcuts -> Typing -> Switch to next input source
+      - Click on the shortcut and press the desired key combination (e.g., Ctrl + Space)
+
+Use Fcitx Framework:
+  1. Install Fcitx5 and its Chinese input method modules:
+    To install: |
+      sudo apt update
+      sudo apt install fcitx5 fcitx5-chinese-addons fcitx5-config-qt
+    To uninstall: |
+      sudo apt remove fcitx5 fcitx5-chinese-addons fcitx5-config-qt
+
+  2. Configure Environment Variables:
+    In the ~/.xprofile file: Executes commands and scripts right before the graphical window manager starts
+    Configurations: |
+      GTK_IM_MODULE=fcitx
+      QT_IM_MODULE=fcitx
+      XMODIFIERS=@im=fcitx
+      SDL_IM_MODULE=fcitx
+
+  3. Select Fcitx5 as System Input Method:
+    To enable: im-config -n fcitx5
+    To disable: im-config -n none
+
+  4. Restart the System:
+    1. run: fcitx-configtool
+    2. Add: Chinese input method (e.g., Pinyin) to the input method list
+
+  5. Switch input language: Ctrl + Space
