@@ -3,7 +3,6 @@
 echo '"$?" is the exit code of the immediate last command'
 echo "\$? = $? at the moment"
 
-
 echo "exit cause the script to exit immediately"
 exit 1
 
