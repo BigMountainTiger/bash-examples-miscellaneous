@@ -1,0 +1,31 @@
+Ubuntu SHELL source file order:
+  Interactive Login Shell:
+    1. /etc/profile: The system-wide initialization file executed for all users
+    2. /etc/bash.bashrc: Sourced automatically by Ubuntu's default /etc/profile
+    3. user-specific file:
+      1. Search the files by the order, but read only the first found:
+        1. ~/.bash_profile: The first user-specific file Bash searches for in your home directory
+        2. ~/.bash_login: Read only if ~/.bash_profile does not exist
+        3. ~/.profile: Read only if neither ~/.bash_profile nor ~/.bash_login exists
+      2. ~/.bashrc: Sourced explicitly by Ubuntu's default ~/.profile or ~/.bash_profile for login shells
+
+  Interactive Non-Login Shell:
+    1. /etc/bash.bashrc: System-wide configuration file for interactive configurations
+    2. ~/.bashrc: User-specific terminal startup file where personalized aliases and functions live
+
+Best Practices:
+  Never modify the following files: |
+    /etc/profile
+    /etc/bash.bashrc
+
+  ~/.profile:
+    Purpose: Since it is only sourced 1 time, it is the good place to put the PATH in this file
+    Make sure it is sourced only once:
+      How: Add a code block guard at the top of the ~/.profile file
+      Example: |
+        # Prevent .profile sourced more than 1 time
+        [ -n "$MY_PROFILE_SOURCED" ] && return || export MY_PROFILE_SOURCED=1
+
+  ~/.bash_aliases:
+    Purpose: It is read automatically by ~/.bashrc if available
+    Recommendation: It is recommended to put alias in this file

@@ -7,9 +7,16 @@
     "files.associations": {
         ".yml": "yaml"
     },
+    "[yaml]": {
+        "editor.tabSize": 2,
+        "editor.insertSpaces": true,
+        "editor.detectIndentation": false
+    },
     "files.enableTrash": false,
     // explorer
     "explorer.compactFolders": false,
+    // Do not forward ports automatically
+    "remote.autoForwardPorts": false,
     // terminal
     // https://github.com/microsoft/vscode/issues/46900
     "terminal.integrated.fontSize": 16,
@@ -35,11 +42,10 @@
     // redhat
     "redhat.telemetry.enabled": false,
     "[shellscript]": {
-        "editor.defaultFormatter": "foxundermoon.shell-format",
+        "editor.defaultFormatter": "mkhl.shfmt",
         "editor.tabSize": 4
     },
     "diffEditor.ignoreTrimWhitespace": false,
     "workbench.editor.empty.hint": "hidden",
-    "workbench.colorTheme": "Dark Modern",
-    "gitlens.mode.active": "zen"
+    "workbench.colorTheme": "Dark Modern"
 }

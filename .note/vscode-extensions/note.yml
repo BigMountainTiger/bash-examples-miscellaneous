@@ -1,0 +1,14 @@
+The following extensions have been tested:
+  1: 
+    VSCode Extension: The "Bash IDE"
+    Purpose: helps on bash syntax
+  2: 
+    VSCode Extension: The "shfmt" (Martin Kühl) extension
+    Purpose: helps to format the bash scripts
+    Reference: https://marketplace.visualstudio.com/items?itemName=mkhl.shfmt
+    Depndency: sudo apt install shfmt
+    Configuration in .vscode/settings.json: |
+      "[shellscript]": {
+        "editor.defaultFormatter": "mkhl.shfmt",
+        "editor.tabSize": 4
+      }

@@ -1,0 +1,23 @@
+1. Configure the Host in Virt-Manager:
+  1: Turn off your virtual machine
+  2: Open Virt-Manager => select your VM => info
+  3: Click Memory in the left pane and check Enable shared memory => Click Apply
+  4: Click Add Hardware at the bottom left
+  5: Select File System in the list
+  6. Configure the details:
+    Driver: virtiofs
+    Source Path: Click Browse and select the folder on your Ubuntu host you want to share
+    Target Path: Give it a simple, memorable tag name (e.g., shared_folder)
+
+2. Mount the Folder in the Ubuntu Guest:
+  1: Boot up your virtual machine and log in
+  2: Create a directory => e.g. mkdir ~/Shared
+  3: sudo mount -t virtiofs shared_folder ~/Shared
+
+3. Make the Mount Permanent:
+  1:
+    Todo: Edit "/etc/fstab" file
+    command: sudo vi /etc/fstab
+  2:
+    Todo: Add line to the bottom
+    Add line: shared_folder /home/user_name/Shared (need full path) virtiofs defaults 0 0

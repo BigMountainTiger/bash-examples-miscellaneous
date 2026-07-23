@@ -1,0 +1,19 @@
+Verify if system support Virtualization: |
+  lscpu | grep Virtualization
+
+Install:
+  1: sudo apt update
+  2: sudo apt install qemu-kvm qemu-system libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+  3: |
+    sudo usermod -aG libvirt $USER
+    sudo usermod -aG kvm $USER
+  4: |
+    sudo systemctl enable libvirtd
+    sudo systemctl start libvirtd
+
+    systemctl status libvirtd
+
+Create a Virtual Machine:
+  Download an os image: ubuntu, mint, etc.
+  Create a .qcow2 file: qemu-img create -f qcow2 filename.qcow2 25G
+  Use Virtual Machine Manager:
