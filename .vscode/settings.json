@@ -1,4 +1,13 @@
 {
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "terminal.integrated.profiles.linux": {
+        "bash": {
+            "path": "bash",
+            "env": {
+                "PROJECT_BASE": "${workspaceFolder}"
+            }
+        }
+    },
     // editor
     "editor.minimap.enabled": false,
     "editor.stickyScroll.enabled": false,
@@ -21,8 +30,6 @@
     // https://github.com/microsoft/vscode/issues/46900
     "terminal.integrated.fontSize": 16,
     "terminal.integrated.fontFamily": "Ubuntu mono",
-    "terminal.integrated.defaultProfile.linux": "bash",
-    "terminal.integrated.defaultProfile.windows": "Git Bash",
     "terminal.integrated.enablePersistentSessions": false,
     "terminal.integrated.shellIntegration.enabled": false,
     // python
@@ -33,9 +40,6 @@
     "autopep8.args": [
         "--max-line-length=200"
     ],
-    // security
-    // This can only be set in the user settings.json, ignored in the folder settings.json
-    "security.workspace.trust.untrustedFiles": "open",
     // workbench
     "workbench.startupEditor": "none",
     "workbench.localHistory.enabled": false,

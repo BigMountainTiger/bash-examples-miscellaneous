@@ -1,4 +1,4 @@
-Using the Built-in IBus Framework:
+Using the Built-in IBus Framework (Preferred Method):
   1. (This step is probably not necessary *) Install pinyin input method:
     To install: |
       sudo apt update
