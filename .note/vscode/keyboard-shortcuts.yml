@@ -1,0 +1,7 @@
+Open Keyboard Shortcuts: Ctrl+k Ctrl+s
+
+Add user defined shortcuts:
+  1. Search either of the following:
+    - workbench.action.toggleMaximizedPanel
+    - View: Toggle Maximized Panel
+  2. Add the keyboard short cut: i.e. Ctrl+Alt+Enter

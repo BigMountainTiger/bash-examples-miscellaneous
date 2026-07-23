@@ -28,4 +28,4 @@ Best Practices:
 
   ~/.bash_aliases:
     Purpose: It is read automatically by ~/.bashrc if available
-    Recommendation: It is recommended to put alias in this file
+    Recommendation: It is recommended to put aliases in this file
