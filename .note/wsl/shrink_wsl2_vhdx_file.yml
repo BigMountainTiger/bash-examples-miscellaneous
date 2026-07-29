@@ -1,0 +1,33 @@
+Step 1:
+  Todo: Trim the Linux File System
+  Inside the running WSL instance: sudo fstrim -av
+
+Step 2:
+  Todo: Locate the VHDX File Path
+  Get installed distribution names: wsl -l -v
+  Ubuntu / Standard Distros: |
+    C:\Users\<YourUsername>\AppData\Local\Packages\<DistributionName>\LocalState\ext4.vhdx
+  Docker Desktop Data: |
+    C:\Users\<YourUsername>\AppData\Local\Docker\wsl\data\ext4.vhdx
+
+Step 3:
+  Todo: Shut Down WSL Completely
+  Command: wsl --shutdown
+
+Step 4:
+  Todo: Compact the VHDX File
+  Note: The command require to run as "Administrator" that is not always possible
+  Command: |
+    diskpart
+    select vdisk file="C:\Users\<YourUsername>\AppData\Local\Packages\...\LocalState\ext4.vhdx"
+
+    attach vdisk readonly
+    compact vdisk
+    detach vdisk
+
+    exit
+
+Set to Automatic Reclamation:
+  Note: It is still considered unsafe and disabled by default
+  command: |
+    wsl --manage <distro> --set-sparse true

@@ -1,0 +1,20 @@
+qcow2 is the format of the qemu virtual disk:
+  properties:
+    1: The size on it is the max size. It only takes the actually size on the host system
+    2: It does not srink as filed are deleted within the VM
+  create: |
+    qemu-img create -f qcow2 filename.qcow2 25G
+  resize:
+    relative size: |
+      qemu-img resize /path/to/image.qcow2 +20G
+    absolute size: |
+      qemu-img resize /path/to/image.qcow2 100G
+
+Pysically shrink a qcow2:
+  1: sudo apt install libguestfs-tools
+  2: Make sure to shutdown the VM
+  3:
+    inplace: |
+      sudo virt-sparsify --in-place mint-xfce-play.qcow2
+    to another file: |
+      sudo virt-sparsify mint-xfce-play.qcow2 backup.qcow2

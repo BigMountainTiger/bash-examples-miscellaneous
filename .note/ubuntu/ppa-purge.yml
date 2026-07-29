@@ -1,0 +1,4 @@
+Remove the PPA and downgrade its packages to the official Ubuntu versions:
+  Usage: |
+    sudo apt install ppa-purge
+    sudo ppa-purge ppa:username/ppa-name

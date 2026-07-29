@@ -1,0 +1,7 @@
+File location in the host: C:\Users\user_name\.wslconfig
+
+Content: |
+  [wsl2]
+  networkingMode=mirrored
+  dnsTunneling=true
+  autoProxy=true

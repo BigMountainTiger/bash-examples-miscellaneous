@@ -1,0 +1,12 @@
+fstrim: 
+  Purpse: a Linux command-line utility used to discard unused blocks on a mounted filesystem
+  Is it safe: Yes, it is safe to run
+
+Common Usage:
+  1: sudo fstrim /
+  2: sudo fstrim --all
+  3: sudo fstrim -v /
+  Trim All and verbose: sudo fstrim -av
+
+It may have been scheduled as as service:
+  Command to check: systemctl status fstrim.timer
