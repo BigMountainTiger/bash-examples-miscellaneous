@@ -1,0 +1,12 @@
+Remove vscode:
+  commands: |
+    sudo apt purge code
+    sudo apt autoremove
+  vscode.sources:  The purge also removes the /etc/apt/sources.list.d/vscode.sources file - DEB822 format file
+
+Remove Configures:
+  commands: |
+    rm -rf ~/.config/Code
+    rm -rf ~/.vscode
+  ~/.config/Code: holds your personal configurations, settings, and UI layouts.
+  ~/.vscode houses: all your downloaded extensions

@@ -3,7 +3,7 @@ Verify if system support Virtualization: |
 
 Install:
   1: sudo apt update
-  2: sudo apt install qemu-kvm qemu-system libvirt-daemon-system libvirt-clients bridge-utils virt-manager
+  2: sudo apt install qemu-kvm qemu-system libvirt-daemon-system libvirt-clients bridge-utils virt-manager virtiofsd cpu-checker
   3: |
     sudo usermod -aG libvirt $USER
     sudo usermod -aG kvm $USER
