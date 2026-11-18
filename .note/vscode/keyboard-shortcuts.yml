@@ -1,7 +1,13 @@
 Open Keyboard Shortcuts: Ctrl+k Ctrl+s
 
 Add user defined shortcuts:
-  1. Search either of the following:
-    - workbench.action.toggleMaximizedPanel
-    - View: Toggle Maximized Panel
-  2. Add the keyboard short cut: i.e. Ctrl+Alt+Enter
+  Toggle Maximized Panel:
+    1. Search either of the following:
+      - workbench.action.toggleMaximizedPanel
+      - View: Toggle Maximized Panel
+    2. Add the keyboard short cut: Shift+Alt+Enter
+
+  Reload vscode:
+    1. Search: "Developer: Reload Window"
+    2. Right click: Change when Expression to remove "isDevelopment" if it is there
+    3. Add the keyboard short cut: Ctrl+Alt+R

@@ -2,6 +2,10 @@ TO Resize:
   Configuration:
     1: Make sure Spice Channel is available to VM
     2: Make the Video to Virtio
+  Enable resize in the virt-manager - QEMU/KVM:
+    View => Scale Display:
+      1: Always
+      2: Auto resize VM with window
   Install spice-vdagent: |
     sudo apt install spice-vdagent
 

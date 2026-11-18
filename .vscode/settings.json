@@ -43,6 +43,7 @@
     // workbench
     "workbench.startupEditor": "none",
     "workbench.localHistory.enabled": false,
+    "workbench.experimental.modernUI": false,
     // redhat
     "redhat.telemetry.enabled": false,
     "[shellscript]": {

@@ -13,7 +13,8 @@ qcow2 is the format of the qemu virtual disk:
 Pysically shrink a qcow2:
   1: sudo apt install libguestfs-tools
   2: Make sure to shutdown the VM
-  3:
+  3: No need to zero the qcow2 file from within the VM, virt-sparsify automatically finds the free spaces
+  4. commands:
     inplace: |
       sudo virt-sparsify --in-place mint-xfce-play.qcow2
     to another file: |

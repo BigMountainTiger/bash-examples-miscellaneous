@@ -1,0 +1,26 @@
+Make easy to test OS in a VM:
+
+1. Enabling Nested Virtualization on the "HOST computer":
+  Default: It is likely already enabled by default
+  Verify it is already enabled - If it returns N or 0 => need to enable it:
+    Intel CPU: cat /sys/module/kvm_intel/parameters/nested
+    AMD CPU: cat /sys/module/kvm_amd/parameters/nested
+  If not enabled:
+    Todo: Add/edit the file /etc/modprobe.d/kvm-nested.conf
+    Intel CPU: echo "options kvm_intel nested=1" | sudo tee /etc/modprobe.d/kvm-nested.conf
+    AMD CPU: echo "options kvm_amd nested=1" | sudo tee /etc/modprobe.d/kvm-nested.conf
+
+2. Configuring the First-Level (L1) VM:
+  In virt-manager: Change the CPU model configuration => host-passthrough
+
+3. Run the Inner (L2) VM:
+  1: Log into your first-level guest operating system
+  2:
+    - Verify that /dev/kvm is present and accessible inside the L1 guest by running kvm-ok or checking lscpu
+    - Check /dev/kvm: ls -l /dev/kvm
+    - kvm-ok: |
+        sudo apt update 
+        sudo apt install cpu-checker
+        kvm-ok
+
+  3: Install QEMU/KVM packages inside the first-level guest and launch your second-level inner virtual machine normally
